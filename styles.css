@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@100;400;500;800&family=Roboto:ital,wght@0,300;0,400;1,500&family=Rubik+Iso&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Poppins' ;
+background-color: white;
+  }
+body{
+    width: 100vh;
+    margin: auto;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+
+}
+@media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+    }
+  }
+  #canvasboard{
+background-color: #fff;
+box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+cursor: pointer;
+}
+.tools{
+  display: flex;
+  flex-direction: row;
+justify-content: flex-start;
+  align-items: center;
+  background-color: purple;
+
+width: 500px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+}
+.tools>*{
+  background-color: white;
+  border: 1px solid purple;
+
+height: 30px;
+color: black;
+text-align: center; 
+padding: 1px;
+font-size: 1em;
+font-weight: bold;
+cursor: pointer;
+margin: 0.5px 1px;
+width: 30px;
+}
+.tools> #clear{
+background-color: red;
+width: auto;
+text-align: center;
+color: white;
+border-radius: 3px;
+}
+.tools> #size{
+  width: auto;
+  
+}
