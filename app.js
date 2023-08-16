@@ -81,6 +81,7 @@ canvas.addEventListener("touchstart", (e) => {
 });
 canvas.addEventListener("touchmove", (e) => {
     e.preventDefault();
+    alert("touch move working");
     let touch = e.touches[0];
     x = touch.clientX - canvas.getBoundingClientRect().left;
     y = touch.clientY - canvas.getBoundingClientRect().top;
