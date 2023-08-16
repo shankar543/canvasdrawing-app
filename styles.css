@@ -49,7 +49,7 @@ body {
 .tools>* {
   background-color: white;
   border: 1px solid purple;
-
+  padding: 0.4em;
   height: 30px;
   color: black;
   text-align: center;
@@ -62,14 +62,9 @@ body {
 }
 
 .tools>#clear {
-  background-color: red;
+  background: url("");
   width: auto;
   text-align: center;
   color: white;
   border-radius: 3px;
-}
-
-.tools>#size {
-  width: auto;
-
 }
