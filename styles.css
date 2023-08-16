@@ -49,17 +49,16 @@ body {
 .tools>* {
   background-color: white;
   border: 1px solid purple;
-  padding: 0.4em;
-  height: 30px;
+  height: 1.5em;
   color: black;
   text-align: center;
-  padding: 1px;
   font-size: 1em;
   font-weight: bold;
   cursor: pointer;
   margin: 0.5px 1px;
-  width: 30px;
+  width: 2.5em;
 }
+
 
 .tools>#clear {
   background: url("");

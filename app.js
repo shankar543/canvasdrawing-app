@@ -78,10 +78,11 @@ canvas.addEventListener("touchstart", (e) => {
     x=touch.clientX - canvas.getBoundingClientRect().left;
     y=touch.clientY - canvas.getBoundingClientRect().top;
     drawCircle();
+    x1 = x;
+    y1 = y;
 });
 canvas.addEventListener("touchmove", (e) => {
     e.preventDefault();
-    console.log("touch move working");
     let touch = e.touches[0];
     x = touch.clientX - canvas.getBoundingClientRect().left;
     y = touch.clientY - canvas.getBoundingClientRect().top;
