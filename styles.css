@@ -59,6 +59,22 @@ body {
   width: 2.5em;
 }
 
+.tools>[id="download"] {
+  color: green;
+  background-color: white;
+  width: auto;
+  max-width: 100%;
+  padding: .5em;
+  font-size: .9em;
+  height: 2em;
+  line-height: 1em;
+  border-radius: 10px;
+}
+
+.tools>[id="download"]:hover {
+  background-color: green;
+  color: white;
+}
 
 .tools>#clear {
   background: url("");

@@ -3,7 +3,8 @@ const canvas = document.querySelector("#canvasboard");
 let sizeincrease = document.querySelector('#sizeincrease');
 let sizedecrease = document.querySelector('#sizedecrease');
 let colorEL=document.querySelector('#color');
-let sizeEL= document.querySelector("#size")
+let sizeEL = document.querySelector("#size");
+const download = document.getElementById("download");
 let x = 0,
     y = 0;
 let x2 = 0, y2 = 0 ,x1=0,y1=0;
@@ -110,3 +111,17 @@ function drawLine() {
     ctx.lineTo(x2, y2);
     ctx.stroke();
 }
+const blobCallback = function (name) {
+    return (blob) => {
+        let link = document.createElement("a")
+        link.href = URL.createObjectURL(blob);
+        link.download = name;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+   }
+}
+download.addEventListener("click", function (e) {
+    let name = prompt("give name for image to download")
+    canvas.toBlob(blobCallback(name), "image/jpeg", 1);
+});
