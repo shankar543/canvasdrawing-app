@@ -59,7 +59,7 @@ body {
   width: 2.5em;
 }
 
-.tools>[id="download"] {
+.tools>.link {
   color: green;
   background-color: white;
   width: auto;
@@ -71,7 +71,7 @@ body {
   border-radius: 10px;
 }
 
-.tools>[id="download"]:hover {
+.tools>.link:hover {
   background-color: green;
   color: white;
 }

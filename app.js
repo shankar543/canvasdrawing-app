@@ -5,6 +5,9 @@ let sizedecrease = document.querySelector('#sizedecrease');
 let colorEL=document.querySelector('#color');
 let sizeEL = document.querySelector("#size");
 const download = document.getElementById("download");
+let sharelink = "";
+const shareButton = document.getElementById('shareButton');
+shareButton.style.display = "none";
 let x = 0,
     y = 0;
 let x2 = 0, y2 = 0 ,x1=0,y1=0;
@@ -30,7 +33,8 @@ canvas.addEventListener("mouseup", function (e) {
     y2 = undefined;
 });
 canvas.onmousemove = function (e) {
-	if (ismouseDown) {
+    if (ismouseDown) {
+        shareButton.style.display = "block";
 		x2 = e.offsetX;
         y2 = e.offsetY;
         drawCircle();
@@ -40,7 +44,9 @@ canvas.onmousemove = function (e) {
 	}
 };
 clear.addEventListener("click", function () {
-ctx.clearRect(0,0,canvas.width,canvas.height)
+    shareButton.style.display = "none";
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
 });
 
 function drawCircle() {
@@ -75,10 +81,11 @@ colorEL.addEventListener('change', function (e) {
     color = e.target.value;
 });
 canvas.addEventListener("touchstart", (e) => {
+    shareButton.style.display = "block";
     let touch = e.touches[0];
     x=touch.clientX - canvas.getBoundingClientRect().left;
     y=touch.clientY - canvas.getBoundingClientRect().top;
-    drawCircle();
+    // drawCircle();
     x1 = x;
     y1 = y;
 });
@@ -115,6 +122,7 @@ const blobCallback = function (name) {
     return (blob) => {
         let link = document.createElement("a")
         link.href = URL.createObjectURL(blob);
+        sharelink = link.href;
         link.download = name;
         document.body.appendChild(link);
         link.click();
@@ -124,4 +132,22 @@ const blobCallback = function (name) {
 download.addEventListener("click", function (e) {
     let name = prompt("give name for image to download")
     canvas.toBlob(blobCallback(name), "image/jpeg", 1);
+});
+
+
+shareButton.addEventListener('click', () => {
+  if (navigator.share) {
+    navigator.share({
+      title: 'My Drawing',
+      text: 'Check out my amazing drawing!',
+      url: sharelink,
+    })
+      .then(() => console.log('Shared successfully'))
+      .catch((error) => console.error('Error sharing:', error));
+  } else {
+    // Fallback behavior for devices that don't support Web Share API
+    const drawingUrl = sharelink;
+    const shareUrl = `whatsapp://send?text=${encodeURIComponent(drawingUrl)}`;
+    window.location.href = shareUrl;
+  }
 });
