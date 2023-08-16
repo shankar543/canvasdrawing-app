@@ -80,6 +80,7 @@ canvas.addEventListener("touchstart", (e) => {
     drawCircle();
 });
 canvas.addEventListener("touchmove", (e) => {
+    e.preventDefault();
     let touch = e.touches[0];
     x = touch.clientX - canvas.getBoundingClientRect().left;
     y = touch.clientY - canvas.getBoundingClientRect().top;
