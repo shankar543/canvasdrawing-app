@@ -81,11 +81,16 @@ canvas.addEventListener("touchstart", (e) => {
 });
 canvas.addEventListener("touchmove", (e) => {
     e.preventDefault();
-    alert("touch move working");
+    console.log("touch move working");
     let touch = e.touches[0];
     x = touch.clientX - canvas.getBoundingClientRect().left;
     y = touch.clientY - canvas.getBoundingClientRect().top;
+    x2 = x;
+    y2 = y;
     drawCircle();
+    drawLine();
+    x1 = x;
+    y1 = y;
 });
 canvas.addEventListener("touchstop", (e) => {
     ismouseDown = false;
