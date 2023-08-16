@@ -8,6 +8,7 @@ const download = document.getElementById("download");
 let sharelink = "";
 const shareButton = document.getElementById('shareButton');
 shareButton.style.display = "none";
+const fullscreenButton = document.getElementById('fullscreenButton');
 let x = 0,
     y = 0;
 let x2 = 0, y2 = 0 ,x1=0,y1=0;
@@ -140,7 +141,7 @@ shareButton.addEventListener('click', () => {
     navigator.share({
       title: 'My Drawing',
       text: 'Check out my amazing drawing!',
-      url: sharelink,
+      url: "",
     })
       .then(() => console.log('Shared successfully'))
       .catch((error) => console.error('Error sharing:', error));
@@ -151,3 +152,37 @@ shareButton.addEventListener('click', () => {
     window.location.href = shareUrl;
   }
 });
+
+
+let drawingData = undefined;
+
+// Function to toggle fullscreen
+function toggleFullscreen() {
+    drawingData = canvas.toDataURL();
+    
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  } else {
+    document.documentElement.requestFullscreen().catch(err => {
+      console.error('Error attempting to enable full-screen mode:', err);
+    });
+    }
+    resizeCanvas();
+}
+
+fullscreenButton.addEventListener('click', toggleFullscreen);
+
+function resizeCanvas(){
+    if (document.fullscreenElement) {
+        canvas.width = 500;
+        canvas.height = 500;
+    } else {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    const img = new Image();
+    img.onload = function () {
+        canvas.getContext('2d').drawImage(img, canvas.width/4, canvas.height/4); 
+    }
+    img.src = drawingData;
+}
